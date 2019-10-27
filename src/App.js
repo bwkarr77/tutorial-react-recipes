@@ -7,14 +7,22 @@ function App() {
   const exampleReq = `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
   const [counter, setCounter] = useState(0);
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     console.log("useEffect");
+    getRecipes();
   }, []);
+  // useEffect(() => {
+  //   console.log("useEffect");
+  // }, [counter]);  ---> console.log runs when counter changes
 
-  // const counterFunc = () => {
-  //   setCounter(counter++);
-  // };
+  const getRecipes = async () => {
+    const response = await fetch(exampleReq);
+    const data = await response.json(); //format's the data in a nice way.
+    console.log(data.hits);
+    setRecipes(data.hits);
+  };
 
   return (
     <div className="App">
@@ -24,6 +32,7 @@ function App() {
           submit
         </button>
         <h1 onClick={() => setCounter(counter + 1)}>{counter}</h1>
+        {/* <h1 onClick={counterFunc(counter)}>{counter}</h1> */}
       </form>
     </div>
   );
