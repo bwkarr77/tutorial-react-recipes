@@ -12,6 +12,10 @@ function App() {
     console.log("useEffect");
   }, []);
 
+  // const counterFunc = () => {
+  //   setCounter(counter++);
+  // };
+
   return (
     <div className="App">
       <form className="search-form">
