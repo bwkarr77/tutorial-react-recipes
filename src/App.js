@@ -54,9 +54,11 @@ function App() {
         </button>
         {/* <h1 onClick={() => setCounter(counter + 1)}>{counter}</h1> */}
       </form>
-      {recipes.map(recipe => (
-        <Recipe props={recipe.recipe} key={recipe.recipe.label} />
-      ))}
+      <div className="recipes">
+        {recipes.map(recipe => (
+          <Recipe props={recipe.recipe} key={recipe.recipe.label} />
+        ))}
+      </div>
     </div>
   );
 }
